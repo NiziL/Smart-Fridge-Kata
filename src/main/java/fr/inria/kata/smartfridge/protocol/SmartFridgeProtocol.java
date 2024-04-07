@@ -9,13 +9,17 @@ import java.util.LinkedList;
 
 public abstract class SmartFridgeProtocol {
 
-    protected List<Product> products = new LinkedList<>();
+    private List<Product> products = new LinkedList<>();
+
+    public List<Product> getProducts() {
+        return products;
+    }
 
     public final void dailyUpdate() {
         // scan and add new items
         products.addAll(getNewProducts());
         // update freshness
-        products.parallelStream().forEach(updateFreshness(p));
+        products.parallelStream().forEach(p -> updateFreshness(p));
         // remove expired products
         products.removeAll(getExpiringProducts());
     };
@@ -27,4 +31,5 @@ public abstract class SmartFridgeProtocol {
     public abstract List<Product> getExpiringProducts();
 
     public abstract List<Product> getProductsWith(Set<String> tags);
+
 }
