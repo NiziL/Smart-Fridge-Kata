@@ -4,7 +4,7 @@ import java.nio.channels.NotYetConnectedException;
 import java.util.List;
 import java.util.Set;
 
-public class SmartRecognitionServer {
+public class SmartRecognitionEngine {
 
     public static class ProductInformations {
         private String name;

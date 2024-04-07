@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
-import java.util.Random;
 
 import fr.inria.kata.smartfridge.protocol.SmartFridgeProtocol;
-import fr.inria.kata.smartfridge.protocol.SmartRecognitionServer;
-import fr.inria.kata.smartfridge.protocol.SmartRecognitionServer.ProductInformations;;
+import fr.inria.kata.smartfridge.protocol.SmartRecognitionEngine;
+import fr.inria.kata.smartfridge.protocol.SmartRecognitionEngine.ProductInformations;;
 
 public class SmartFridge extends SmartFridgeProtocol {
 
@@ -63,7 +62,7 @@ public class SmartFridge extends SmartFridgeProtocol {
                     if (tag.equals(tagSearched))
                         check++;
                 }
-                if (check >= tags.size()) {
+                if (check == tags.size()) {
                     list.add(p);
                 }
             }
@@ -84,7 +83,7 @@ public class SmartFridge extends SmartFridgeProtocol {
     @Override
     public List<Product> getNewProducts() {
         List<Product> products = new ArrayList<>();
-        List<ProductInformations> news = SmartRecognitionServer.scanNewProducts();
+        List<ProductInformations> news = SmartRecognitionEngine.scanNewProducts();
         for (ProductInformations infos : news) {
             products.add(new Product(infos.getName(), infos.getType(), infos.getTags()));
         }

@@ -1,4 +1,4 @@
-# Smart Fridge
+# Smart Fridge Kata
 
 > This Kata has been designed as a final hands-on exam for undergraduate students at [IUT Charlemagne](https://iut-charlemagne.univ-lorraine.fr/).  
 > It borrows many ideas from [Gilded Rose](https://github.com/emilybache/GildedRose-Refactoring-Kata) and [Trip Service](https://github.com/sandromancuso/trip-service-kata).  
@@ -27,8 +27,8 @@ However, you **MUST NOT** change the files in the `protocol` subpackage.
 - the fridge also has the following features:
   - list all the products expiring tomorrow
   - list all the products with a set of tags
-- the fridge is connected to our SmartRecognitionServer™, which give these informations about a product on scan
-  - its name
+- the fridge is supplied with our SmartRecognitionEngine™, which gives these informations when detecting new products
+  - a name
   - a type of product (e.g. meat, vegetable, fruit...)
   - a set of tags (e.g. sweet, salty, healthy, organic...)
 
@@ -39,4 +39,4 @@ Our customers reported that the fridge quickly becomes slow and needs frequents 
 We want to introduce two new types with the following rules
 
 - type `egg`, freshness decrease by 3% per day 
-- type `fruit`, freshness decreases by 5% per day while it is greater than 25%, and then decrease by 15% per day
+- type `fruit`, freshness decreases by 5% per day while it is greater than 60%, and then decrease by 15% per day
