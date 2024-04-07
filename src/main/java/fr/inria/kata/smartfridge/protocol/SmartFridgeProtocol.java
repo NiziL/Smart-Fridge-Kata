@@ -12,12 +12,11 @@ public abstract class SmartFridgeProtocol {
     protected List<Product> products = new LinkedList<>();
 
     public final void dailyUpdate() {
+        // scan and add new items
         products.addAll(getNewProducts());
-
-        for (Product p : products) {
-            updateFreshness(p);
-        }
-
+        // update freshness
+        products.parallelStream().forEach(updateFreshness(p));
+        // remove expired products
         products.removeAll(getExpiringProducts());
     };
 

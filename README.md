@@ -8,19 +8,22 @@ Welcome to Smart Stuff Society !
 
 You are now in charge of our SmartFridge™ internal software.
 Your job is to implement the next update, detailed in the [todo](https://github.com/NiziL/Smart-Fridge-Kata#todo) section.  
-The original developper left few weeks ago, mentioning that "the code is a little messy" so feel free to refactor it as you wish !  
+The original developper left few weeks ago, telling us "the code is a little messy, but I left some comments" so feel free to refactor it as you wish !  
 However, you **MUST NOT** change the files in the `protocol` subpackage.
 
 ### Current system
 
 - every day, the fridge run the following routine
   - scan every new products
-- every day, the fridge decrements all the freshness of products according to the following rules
-  - freshness cannot be negative
-  - for type `yogourt`, freshness decrease by 5% per days
-  - for type `vegetable`, freshness decrease by 10% per days
-  - for type `mushroom`, freshness decrease by 10% per days while freshness is greater than 50%, and then decrease by 5% per days
-  - for type `meat`, freshness decrease by 10% per days during three days, and then decrease by 20% per days
+  - update the freshness of all products
+  - destroy all expired products (freshness <= 0)
+- freshness update is done according to the following rules
+  - for type `eternal`, it never decreasess
+  - for type `yogourt`, it decreasess by 5% per day
+  - for type `vegetable`, it decreasess randomly by 20% to 25% per day
+  - for type `mushroom`, it decreasess by 10% per day while it is greater than 50%, and then decreases by 5% per day
+  - for type `meat`, it decreases by 10% per day during 3 days, and then decreases by 20% per day
+  - for others type, it decreases randomly by 5% to 15% per day 
 - the fridge also has the following features:
   - list all the products expiring tomorrow
   - list all the products with a set of tags
@@ -31,13 +34,9 @@ However, you **MUST NOT** change the files in the `protocol` subpackage.
 
 ### Todo
 
-##### Critical bugfix
-
-It seems that the listing of products according to a set of tags is not working very well, fix it and write a test for it, so we never see it again !
-
-##### New feature
+Our customers reported that the fridge quickly becomes slow and needs frequents reboot since the `meat` update, you need to investiguate !
 
 We want to introduce two new types with the following rules
 
-- `fruit`, freshness decrease by 5% per days while freshness is greater than 25%, and then decrease by 15% per days
-- `egg`, freshness decrease by 15% per days during 5 days, and then decrease by 1% per days
+- type `fruit`, freshness decreases by 5% per day while it is greater than 25%, and then decrease by 15% per day
+- type `egg`, freshness decreases by 15% per day during 5 days, and then decrease by 1% per day
