@@ -17,11 +17,11 @@ public abstract class SmartFridgeProtocol {
 
     public final void dailyUpdate() {
         // scan and add new items
-        products.addAll(getNewProducts());
+        getProducts().addAll(getNewProducts());
         // update freshness
-        products.parallelStream().forEach(p -> updateFreshness(p));
+        getProducts().parallelStream().forEach(p -> updateFreshness(p));
         // remove expired products
-        products.removeAll(getExpiringProducts());
+        getProducts().removeAll(getExpiringProducts());
     };
 
     public abstract List<Product> getNewProducts();

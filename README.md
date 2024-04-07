@@ -22,7 +22,7 @@ However, you **MUST NOT** change the files in the `protocol` subpackage.
   - for type `yogourt`, it decreasess by 5% per day
   - for type `vegetable`, it decreasess randomly by 20% to 25% per day
   - for type `mushroom`, it decreasess by 10% per day while it is greater than 50%, and then decreases by 5% per day
-  - for type `meat`, it decreases by 10% per day during 3 days, and then decreases by 20% per day
+  - for type `meat`, it decreases by 10% per day during a random number of days between 3 and 5, and then decreases by 20% per day
   - for others type, it decreases randomly by 5% to 15% per day 
 - the fridge also has the following features:
   - list all the products expiring tomorrow
@@ -38,5 +38,5 @@ Our customers reported that the fridge quickly becomes slow and needs frequents 
 
 We want to introduce two new types with the following rules
 
+- type `egg`, freshness decrease by 3% per day 
 - type `fruit`, freshness decreases by 5% per day while it is greater than 25%, and then decrease by 15% per day
-- type `egg`, freshness decreases by 15% per day during 5 days, and then decrease by 1% per day

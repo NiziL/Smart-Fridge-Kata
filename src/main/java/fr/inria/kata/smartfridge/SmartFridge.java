@@ -13,8 +13,6 @@ import fr.inria.kata.smartfridge.protocol.SmartRecognitionServer.ProductInformat
 
 public class SmartFridge extends SmartFridgeProtocol {
 
-    // we had some troubles with the update for meat
-    // so we've added this to keep track of number of days elapsed
     Map<Product, Integer> memory = new HashMap<>();
 
     @Override
@@ -23,30 +21,36 @@ public class SmartFridge extends SmartFridgeProtocol {
 
         p.setFreshness(freshness - 5);
 
-        if (p.getType() != "yogourt")
-            p.setFreshness(p.getFreshness() - (int) (Math.random() * 10));
+        if (p.getType() != "yogourt"
+                && p.getType() != "meat"
+                && p.getType() != "vegetable"
+                && p.getType() != "mushroom"
+                && p.getType() != "eternal") {
+            p.setFreshness(p.getFreshness() - (int) (Math.random() * 11));
+            return;
+        }
 
         int newfreshness = 0;
         if (p.getType() == "vegetable") {
-            newfreshness = (int) (Math.random() * 5 + 15);
+            newfreshness = (int) (Math.random() * 6 + 15);
         } else if (p.getType() == "meat") {
-            newfreshness = 10;
+            newfreshness = 5;
             Integer tmp = memory.get(p);
             if (tmp == null) {
-                memory.put(p, 0);
-            } else if (tmp < 3) {
-                newfreshness *= 2;
+                memory.put(p, (int) (Math.random() * 3 + 2));
+            } else if (tmp == 0) {
+                newfreshness += 10;
+            } else {
+                memory.put(p, tmp - 1);
             }
         } else if (p.getType() == "mushroom") {
             if (p.getFreshness() > 50) {
                 p.setFreshness(p.getFreshness() - 5);
             }
             return;
-        } else if (p.getType() == "yogourt") {
-            return;
         }
 
-        p.setFreshness(p.getType() == "eternal" ? freshness : freshness - newfreshness);
+        p.setFreshness(p.getType() == "eternal" ? freshness : p.getFreshness() - newfreshness);
     }
 
     @Override
@@ -79,9 +83,6 @@ public class SmartFridge extends SmartFridgeProtocol {
 
     @Override
     public List<Product> getNewProducts() {
-        // update meat memory during scan
-        memory.forEach((k, v) -> memory.replace(k, v + 1));
-        // Contact server
         List<Product> products = new ArrayList<>();
         List<ProductInformations> news = SmartRecognitionServer.scanNewProducts();
         for (ProductInformations infos : news) {
