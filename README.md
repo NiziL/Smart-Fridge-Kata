@@ -1,7 +1,7 @@
 # Smart Fridge
 
 > This Kata has been designed as a final hands-on exam for undergraduate students at [IUT Charlemagne](https://iut-charlemagne.univ-lorraine.fr/).  
-> It borrows many ideas from [Gilded Rose](https://github.com/emilybache/GildedRose-Refactoring-Kata) and [Trip Service](https://github.com/sandromancuso/trip-service-kata).
+> It borrows many ideas from [Gilded Rose](https://github.com/emilybache/GildedRose-Refactoring-Kata) and [Trip Service](https://github.com/sandromancuso/trip-service-kata).  
 > Kudos to Emily Bache and Sandro Mancuso for these amazing kata !
 
 Welcome to Smart Stuff Society !
