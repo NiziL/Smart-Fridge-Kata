@@ -1,6 +1,7 @@
 package fr.inria.kata.smartfridge;
 
 import java.util.Set;
+import java.util.HashSet;
 
 public class Product {
     private String name;
@@ -13,6 +14,13 @@ public class Product {
         this.type = type;
         this.freshness = 100;
         this.tags = tags;
+    }
+
+    public Product(String name, String type) {
+        this.name = name;
+        this.type = type;
+        this.freshness = 100;
+        this.tags = new HashSet<>();
     }
 
     public String getName() {
