@@ -8,7 +8,7 @@ Welcome to Smart Stuff Society !
 
 You are now in charge of our SmartFridge™ internal software.
 Your job is to implement the next update, detailed in the [todo](https://github.com/NiziL/Smart-Fridge-Kata#todo) section.  
-The original developper left few weeks ago, telling us "the code is a little messy, but I left some comments" so feel free to refactor it as you wish !  
+The original developper left few weeks ago, telling us "the code is a little messy" so feel free to refactor it as you wish !  
 However, you **MUST NOT** change the files in the `protocol` subpackage.
 
 ### Current system
