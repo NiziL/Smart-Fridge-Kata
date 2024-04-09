@@ -11,6 +11,12 @@ public class SmartRecognitionEngine {
         private String type;
         private Set<String> tags;
 
+        public ProductInformations(String name, String type, Set<String> tags){
+            this.name = name;
+            this.type = type;
+            this.tags = tags;
+        }
+
         public String getName() {
             return name;
         }
