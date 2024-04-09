@@ -62,9 +62,9 @@ public class SmartFridge extends SmartFridgeProtocol {
                     if (tag.equals(tagSearched))
                         check++;
                 }
-                if (check == tags.size()) {
-                    list.add(p);
-                }
+            }
+            if (check == tags.size()) {
+                list.add(p);
             }
         }
         return list;
